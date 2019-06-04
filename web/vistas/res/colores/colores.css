@@ -1,0 +1,20 @@
+:root{
+    --primario:#F38F1F;
+    --secundario:#DA801B;
+    --principal:#183E62;
+    --principal2:#1B466E;
+    --blanco:#FFFFFF;
+    --rojo:#C41230;
+    --naranja:#F39C12;
+    --gris:#ECF0F1;
+    --gris2:#DEDDE1;
+    --verde:#1abc9c;
+    --azul:#0a3d62;
+    --celeste:#3eaefe;
+}
+
+/*COMO USARLO:
+#foo{
+    color: var(--main-color);
+    background-color: var(--blanco);
+}*/
