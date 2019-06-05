@@ -6,21 +6,17 @@
 <link rel="icon" href="../res/img/help.png" />
 
 <!-- CDN LOCAL:-->
-<link rel="stylesheet" href="../res/cdn/bootstrap.min.css">
-<script src="../res/cdn/jquery.min.js"></script>
-<script src="../res/cdn/bootstrap.min.js"></script>
-<script src="../res/cdn/angular.min.js"></script>
 
 <!-- CDN REMOTO: -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
 <!-- FRAMEWORKS: -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.5/dist/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.5/dist/semantic.min.js"></script>
+<link rel="stylesheet" href="../res/frameworks/bootstrap-select.css">
+
 
 
 <!-- FONTS:-->

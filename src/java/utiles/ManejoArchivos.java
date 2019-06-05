@@ -1,8 +1,10 @@
 package utiles;
 
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -41,6 +43,21 @@ public class ManejoArchivos
         }
         
         return lineas;
+    }
+    
+    public static void write(String rutaArchivo, String valor)
+    {
+        try
+        {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
+            writer.write(valor);
+     
+            writer.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
   
 }

@@ -2,14 +2,26 @@
 import java.util.ArrayList;
 import java.util.List;
 import utiles.LineaAutoEntendible;
+import utiles.ManejoArchivos;
 import utiles.ParametroEntender;
+import utiles.wsSSH;
 
 public class Main
 {
     public static void main (String args[])
     {
-        String rutaArchivo = "C:\\transformer\\input-lineas-comd.txt";
-        List<String> lineasEntrada = utiles.ManejoArchivos.read(rutaArchivo);
+        
+        String rutaArchivo = "C:\\transformer\\salida-comd.txt";
+        List<String> lineasLeidas = ManejoArchivos.read(rutaArchivo);
+        
+        lineasLeidas = lineasLeidas.subList(2, (lineasLeidas.size() - 1) );
+        
+        for(String strLoop : lineasLeidas)
+        {
+            System.out.println(strLoop);
+        }
+        
+        //List<String> lineasEntrada = utiles.ManejoArchivos.read(rutaArchivo);
         
         List<ParametroEntender> parametrosList = new ArrayList<ParametroEntender>();
         ParametroEntender parametroIP = new ParametroEntender("ip", "|TCP|C|", "/", null); 
@@ -22,12 +34,21 @@ public class Main
         //entender(lineasEntrada, "-","|");
         
         int contador = 1;
-        for(String strLineaLoop : lineasEntrada)
+        for(String strLineaLoop : lineasLeidas)
         {
             LineaAutoEntendible lineaAI = new LineaAutoEntendible(strLineaLoop);
             System.out.println("************  " + contador + " *************");
             System.out.println("AGENCIA:" + lineaAI.autoentenderme(parametroNombre).getValor());
-            System.out.println("IP:" + lineaAI.autoentenderme(parametroIP).getValor());
+            
+            String ip = lineaAI.autoentenderme(parametroIP).getValor();
+            System.out.println("IP:" + ip);
+            if(ip != null)
+            {
+                if(wsSSH.ping(ip))
+                {
+                    System.out.println("ACTIVO");
+                }
+            }
             contador++;
         }
         
@@ -94,44 +115,7 @@ public class Main
                 System.out.println("meim: " + medio);
                 System.out.println("-----");
             }
-            
-            
-           
-            
-            
-            /* 
-            if(s != null)
-            {
-                if(estadoActual == estados.get(0) && s.contains("EVENT["))
-                {
-                    //System.out.println(contador + " -> " + s);
-                    estadoActual =  estados.get(1);
-                }
-                if(estadoActual == estados.get(1) && s.contains("]"))
-                {
-                    int indiceApertura = (s.indexOf("EVENT[") + 6);
-                    int indiceCierre = s.indexOf("]");
-                    idUltimoEvento = s.substring(indiceApertura, indiceCierre);
-                    estadoActual =  estados.get(2);
-                }
-                if(estadoActual == estados.get(2) && s.contains("Sts:"))
-                {
-                    int indiceApertura = s.indexOf("Sts:");
-                    int indiceCierre = s.indexOf("(");
-                    String estado = s.substring( (indiceApertura + 4) ,indiceCierre);
-                    if(!estado.equalsIgnoreCase("Payout"))
-                    {
-                        System.out.println("Evento[" + idUltimoEvento + "] - estado: " + estado );
-                    }
-
-                    estadoActual = estados.get(0);
-
-                }
-                else
-                {
-                    //System.out.println(contador + " | " + s);
-                }*/
-            }
+        }
 
     }
 }
