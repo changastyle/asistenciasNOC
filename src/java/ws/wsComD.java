@@ -35,7 +35,7 @@ public class wsComD
     {
         List<Sitio> arrSitios = new ArrayList<>();
         
-        String rutaArchivo = "C:\\transformer\\salida-comd.txt";
+        String rutaArchivo = "C:\\jtemp\\salida-comd.txt";
         List<String> lineasLeidas = ManejoArchivos.read(rutaArchivo);
         
         lineasLeidas = lineasLeidas.subList(2, (lineasLeidas.size() - 1) );
