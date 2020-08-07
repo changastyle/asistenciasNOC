@@ -19,19 +19,18 @@ public class wsSSH
     private static  Session session;
     private static Channel channel;
     
-    public static List<String> ssh( String host, String user, String pass, String comando , boolean verbose)
+    public static List<String> ssh( String host, String user, String pass, int port , String comando , boolean verbose)
     {
         List<String> lineasDeSalida = new ArrayList<String>();
         
         String password = pass;
-        int port = 22;
 
         try
         {
             JSch jsch = new JSch();  
             //System.getProperty("user.name")
             
-            session = jsch.getSession(user, host, 22);
+            session = jsch.getSession(user, host, port);
             session.setPassword(password);
             
             //FINGERPRINT
@@ -257,7 +256,7 @@ public class wsSSH
     {
         boolean vivo = false;
         long inicio = System.currentTimeMillis();
-        List<String> arrSalida = ssh("192.168.5.4","root","tecacc","ping " + direccionIP + " -c 1",false);
+        List<String> arrSalida = ssh("192.168.5.4","root","tecacc" , 22 ,"ping " + direccionIP + " -c 1",false);
         
         //1 - GUARDO TODA LA SALIDA DEL SSH EN UNA VARIABLE ACUMULADOR:
         String acumulador = "";
