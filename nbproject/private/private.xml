@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Nico-NOC/Desktop/asistenciasNOC/src/java/archivos/ExcelReader2.java</file>
-            <file>file:/C:/Users/Nico-NOC/Desktop/asistenciasNOC/src/java/LeerXLSLamperti.java</file>
+            <file>file:/C:/Users/Nico/Desktop/asistenciasNOC/src/java/parsers/ParserStatusUBI.java</file>
+            <file>file:/C:/Users/Nico/Desktop/asistenciasNOC/src/java/archivos/ManejoArchivos.java</file>
+            <file>file:/C:/Users/Nico/Desktop/asistenciasNOC/src/java/StatusUBI.java</file>
+            <file>file:/C:/Users/Nico/Desktop/asistenciasNOC/src/java/utiles/wsSSH.java</file>
         </group>
     </open-files>
 </project-private>

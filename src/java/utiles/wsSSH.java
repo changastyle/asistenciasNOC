@@ -54,11 +54,13 @@ public class wsSSH
             
             
             byte[] tmp=new byte[1024];
-            while(true)
+            int exitStatus = 0;
+            while(true && exitStatus == 0)
             {
-                while(in.available()>0)
+                while(in.available()>0 && exitStatus == 0)
                 {
-                    int i=in.read(tmp, 0, 1024);
+                    int i = in.read(tmp, 0, 1024);
+                    
                     if(i<0)
                     {
                         break;
@@ -72,15 +74,20 @@ public class wsSSH
                         System.out.print(aux);
                     }
                 }
+                
                 if(channel.isClosed())
                 {
-                    if(in.available()>0)
+                    if(in.available()>0 )
                     {
                         continue;
                     } 
-                    //System.out.println("exit-status: "+channel.getExitStatus());
+                    
+                    exitStatus = channel.getExitStatus();
+//                    System.out.println("exit-status: " + exitStatus);
+                    
                     break;
                 }
+                
                 try
                 {
                     Thread.sleep(1000);

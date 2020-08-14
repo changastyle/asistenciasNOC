@@ -19,6 +19,7 @@ public class PINGNQN
         
         for(String lineaLoop : arrLineas)
         {
+            String salida = "";
             
             String[] arrSplit = lineaLoop.split("\\|");
             
@@ -48,24 +49,42 @@ public class PINGNQN
             
             if(!utiles.wsSSH.ping(ipPrimaria))
             {
-                System.out.println("LINEA:" + lineaLoop);
-                System.out.println("DESCRIPCION: " + descripcionLinea);
-                System.out.println("IP ACTUAL: " + ipPrimaria);
-                System.out.println("UNA IP MENOS: " + unaIPMenos );
+//                System.out.println("LINEA:" + lineaLoop);
                 
-                System.out.println("NO RESPONDIO EL FLEX: " + ipPrimaria);
+                salida += descripcionLinea + ";";
+//                System.out.println("DESCRIPCION: " + descripcionLinea);
+                salida += ipPrimaria + ";";
+                salida += "0;";
+//                System.out.println("IP ACTUAL: " + ipPrimaria);
+//                System.out.println("UNA IP MENOS: " + unaIPMenos );
+                
+//                System.out.println("NO RESPONDIO EL FLEX: " + ipPrimaria);
+                salida += unaIPMenos + ";";
                 if(utiles.wsSSH.ping(unaIPMenos))
                 {
-                    System.out.println("RESPONDIO OK EL UBI: " + ipPrimaria);
+                    salida += "1;";
+//                    System.out.println("RESPONDIO OK EL UBI: " + unaIPMenos);
+                    
+                    if(StatusUBI.ubiEstaUnplugged(unaIPMenos))
+                    {
+                        salida +=  "UNPLUGGED;";
+                    }
+                    else
+                    {
+                        salida +=  "OK;";
+                    }
+//                    System.out.println("UBI UNPLUGGED: " + StatusUBI.ubiEstaUnplugged(unaIPMenos));
                 }
                 else
                 {
-                    System.out.println("!!!!! NO RESPONDIO EL UBI: " + unaIPMenos);
+                    salida += "0;";
+//                    System.out.println("!!!!! NO RESPONDIO EL UBI: " + unaIPMenos);
                 }
-                System.out.println("----");
+//                System.out.println("----");
             }
             else
             {
+                salida += "OPERATIVO: " + descripcionLinea + ";;;;;";
 //                    System.out.println("LINEA:" + lineaLoop);
 //                System.out.println("DESCRIPCION: " + descripcionLinea);
 //                System.out.println("IP ACTUAL: " + ipPrimaria);
@@ -73,6 +92,9 @@ public class PINGNQN
 //                System.out.println("FLEX OK");
 //                System.out.println("----");
             }
+            
+//            salida += "\n ----------";
+            System.out.println(salida);
             
             
         }
